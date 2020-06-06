@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfLogger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Logger" Height="400" Width="550"
+        xmlns:ViewModel ="clr-namespace:WpfLogger">
+    <Window.DataContext>
+        <ViewModel:LoggerVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="275*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Logged information" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,35,0,0" Height="325" Width="224" Grid.Column="1">
+            <ListBox ItemsSource="{Binding LoggedData}" HorizontalAlignment="Left" Height="221" Margin="10,36,0,0" VerticalAlignment="Top" Width="190"/>
+        </GroupBox>
+        <Button Command="{Binding getLog}" Content="Show log" HorizontalAlignment="Left" Margin="43,330,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button Command="{Binding clearLog}"  Content="Delete log" HorizontalAlignment="Left" Margin="154,330,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <GroupBox Header="Log your message" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,35,0,0" Height="325" Width="224">
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,243,0,0" TextWrapping="Wrap" Text="{Binding logInput, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="194"/>
+        </GroupBox>
+        <Button Command="{Binding LogText}" Content="Log" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,330,0,0"/>
+        <Label Content="Enter your message:" HorizontalAlignment="Left" Margin="39,263,0,0" VerticalAlignment="Top" Width="123"/>
+    </Grid>
+</Window>
